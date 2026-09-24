@@ -1,0 +1,97 @@
+{
+  "entities": {
+    "order": {
+      "title": "Print Order",
+      "description": "Weekly signage and print service order request",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "createdAt": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "reviewing", "approved", "printing", "completed", "cancelled"]
+        },
+        "vendorName": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "city": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "blBoard": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "workStartDate": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "weekEndingDate": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "totalQuantity": {
+          "type": "number"
+        },
+        "submitterEmail": {
+          "type": "string",
+          "maxLength": 200
+        }
+      },
+      "required": ["id", "createdAt", "status", "vendorName", "city", "blBoard"]
+    },
+    "appSettings": {
+      "title": "Application Settings",
+      "description": "Global portal settings and form field customization",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 64
+        },
+        "businessName": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "formTitle": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "formDescription": {
+          "type": "string",
+          "maxLength": 1000
+        },
+        "supportEmail": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "themeColor": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "updatedAt": {
+          "type": "string",
+          "maxLength": 64
+        }
+      },
+      "required": ["id", "businessName", "formTitle"]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": "order",
+      "description": "Public and user submitted signage and print service requests"
+    },
+    "/settings/{settingId}": {
+      "schema": "appSettings",
+      "description": "Global application configuration and custom form builder schema"
+    }
+  }
+}

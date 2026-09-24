@@ -1,0 +1,8 @@
+{
+  "name": "PrintCraft - Print Services Request & Order Management Portal",
+  "description": "Responsive printing services submission portal with custom quantity pricing, file uploads, conditional logic form builder, real-time admin order management, and Google Sheets centralized recurring reporting sync.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
