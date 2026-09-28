@@ -374,14 +374,14 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                 onChange={(e) => setStatusFilter(e.target.value)}
                 className="px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value="all">All Statuses</option>
-                <option value="pending">Pending Audit</option>
-                <option value="proof_review">In Proofing</option>
-                <option value="printing">On Press (Printing)</option>
-                <option value="finishing">Finishing & Mounting</option>
-                <option value="ready">Ready / Staged</option>
-                <option value="completed">Completed</option>
-                <option value="cancelled">Cancelled</option>
+                <option value="all" className="bg-white text-black dark:bg-slate-800 dark:text-white">All Statuses</option>
+                <option value="pending" className="bg-white text-black dark:bg-slate-800 dark:text-white">Pending Audit</option>
+                <option value="proof_review" className="bg-white text-black dark:bg-slate-800 dark:text-white">In Proofing</option>
+                <option value="printing" className="bg-white text-black dark:bg-slate-800 dark:text-white">On Press (Printing)</option>
+                <option value="finishing" className="bg-white text-black dark:bg-slate-800 dark:text-white">Finishing & Mounting</option>
+                <option value="ready" className="bg-white text-black dark:bg-slate-800 dark:text-white">Ready / Staged</option>
+                <option value="completed" className="bg-white text-black dark:bg-slate-800 dark:text-white">Completed</option>
+                <option value="cancelled" className="bg-white text-black dark:bg-slate-800 dark:text-white">Cancelled</option>
               </select>
 
               {allVendors.length > 0 && (
@@ -390,9 +390,9 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                   onChange={(e) => setVendorFilter(e.target.value)}
                   className="px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
-                  <option value="all">All Vendors</option>
+                  <option value="all" className="bg-white text-black dark:bg-slate-800 dark:text-white">All Vendors</option>
                   {allVendors.map(v => (
-                    <option key={v} value={v}>{v}</option>
+                    <option key={v} value={v} className="bg-white text-black dark:bg-slate-800 dark:text-white">{v}</option>
                   ))}
                 </select>
               )}

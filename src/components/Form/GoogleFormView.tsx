@@ -429,7 +429,7 @@ export const GoogleFormView: React.FC<GoogleFormViewProps> = ({
               <select
                 value={val}
                 onChange={(e) => handleInputChange(fieldId, e.target.value)}
-                className={`w-full px-4 py-3 rounded border text-sm appearance-none bg-white dark:bg-slate-800 text-[#202124] dark:text-white cursor-pointer pr-10 outline-none transition-colors ${
+                className={`w-full px-4 py-3 rounded border text-sm appearance-none bg-white dark:bg-slate-800 text-black dark:text-white font-medium cursor-pointer pr-10 outline-none transition-colors ${
                   hasError 
                     ? 'border-[#d93025] focus:border-[#d93025]' 
                     : 'border-[#dadce0] dark:border-slate-700'
@@ -442,9 +442,9 @@ export const GoogleFormView: React.FC<GoogleFormViewProps> = ({
                   ...(isActive && !hasError ? { borderColor: themeColor } : {})
                 }}
               >
-                <option value="">{placeholder || 'Choose'}</option>
+                <option value="" className="bg-white text-black dark:bg-slate-800 dark:text-white font-medium">{placeholder || 'Choose'}</option>
                 {(options || ARTWORK_TYPE_OPTIONS).map(opt => (
-                  <option key={opt.value} value={opt.value}>
+                  <option key={opt.value} value={opt.value} className="bg-white text-black dark:bg-slate-800 dark:text-white font-medium">
                     {opt.label}
                   </option>
                 ))}
@@ -457,14 +457,14 @@ export const GoogleFormView: React.FC<GoogleFormViewProps> = ({
                 value={val}
                 onChange={(e) => handleInputChange(fieldId, e.target.value)}
                 placeholder="dd-mm-yyyy"
-                className={`w-full py-2 px-1 border-b text-sm bg-transparent outline-none transition-colors ${
+                className={`w-full py-2 px-1 border-b text-sm bg-transparent outline-none transition-colors text-black dark:text-white font-medium ${
                   hasError
-                    ? 'border-b-2 border-[#d93025] text-[#d93025]'
-                    : 'border-[#dadce0] dark:border-slate-700 text-[#202124] dark:text-white'
+                    ? 'border-b-2 border-[#d93025]'
+                    : 'border-[#dadce0] dark:border-slate-700'
                 }`}
                 style={isActive && !hasError ? { borderBottomColor: themeColor, borderBottomWidth: '2px' } : undefined}
               />
-              <span className="text-[11px] text-gray-400 block mt-1">Date</span>
+              <span className="text-[11px] text-slate-600 dark:text-slate-400 font-semibold block mt-1">Date</span>
             </div>
           ) : type === 'textarea' ? (
             <textarea
@@ -472,10 +472,10 @@ export const GoogleFormView: React.FC<GoogleFormViewProps> = ({
               onChange={(e) => handleInputChange(fieldId, e.target.value)}
               placeholder={placeholder}
               rows={3}
-              className={`w-full py-2 border-b text-sm bg-transparent outline-none transition-colors placeholder:text-gray-400 ${
+              className={`w-full py-2 border-b text-sm bg-transparent outline-none transition-colors text-black dark:text-white font-medium placeholder:text-slate-600 dark:placeholder:text-slate-400 ${
                 hasError
                   ? 'border-b-2 border-[#d93025]'
-                  : 'border-[#dadce0] dark:border-slate-700 text-[#202124] dark:text-white'
+                  : 'border-[#dadce0] dark:border-slate-700'
               }`}
               style={isActive && !hasError ? { borderBottomColor: themeColor, borderBottomWidth: '2px' } : undefined}
             />
@@ -485,10 +485,10 @@ export const GoogleFormView: React.FC<GoogleFormViewProps> = ({
               value={val}
               onChange={(e) => handleInputChange(fieldId, e.target.value)}
               placeholder={placeholder}
-              className={`w-full sm:w-2/3 py-2 border-b text-sm bg-transparent outline-none transition-colors placeholder:text-gray-400 ${
+              className={`w-full sm:w-2/3 py-2 border-b text-sm bg-transparent outline-none transition-colors text-black dark:text-white font-medium placeholder:text-slate-600 dark:placeholder:text-slate-400 ${
                 hasError
                   ? 'border-b-2 border-[#d93025]'
-                  : 'border-[#dadce0] dark:border-slate-700 text-[#202124] dark:text-white'
+                  : 'border-[#dadce0] dark:border-slate-700'
               }`}
               style={isActive && !hasError ? { borderBottomColor: themeColor, borderBottomWidth: '2px' } : undefined}
             />

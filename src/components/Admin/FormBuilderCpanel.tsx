@@ -528,14 +528,14 @@ const FieldEditorModal: React.FC<FieldEditorModalProps> = ({
                   placeholder="Option display label"
                   value={newOptionLabel}
                   onChange={(e) => setNewOptionLabel(e.target.value)}
-                  className="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 text-xs bg-white dark:bg-slate-800"
+                  className="flex-1 px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 text-xs bg-white dark:bg-slate-800 text-black dark:text-white font-medium placeholder:text-slate-500 dark:placeholder:text-slate-400 outline-none"
                 />
                 <input
                   type="text"
                   placeholder="Stored value (optional)"
                   value={newOptionValue}
                   onChange={(e) => setNewOptionValue(e.target.value)}
-                  className="w-36 px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 text-xs bg-white dark:bg-slate-800"
+                  className="w-36 px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 text-xs bg-white dark:bg-slate-800 text-black dark:text-white font-medium placeholder:text-slate-500 dark:placeholder:text-slate-400 outline-none"
                 />
                 <button
                   type="button"
@@ -600,10 +600,10 @@ const FieldEditorModal: React.FC<FieldEditorModalProps> = ({
                       <select
                         value={rule.operator}
                         onChange={(e) => handleUpdateRule(idx, 'operator', e.target.value)}
-                        className="px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs bg-white dark:bg-slate-800"
+                        className="px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs bg-white dark:bg-slate-800 text-black dark:text-white font-medium"
                       >
                         {OPERATORS.map(op => (
-                          <option key={op.op} value={op.op}>{op.label}</option>
+                          <option key={op.op} value={op.op} className="bg-white text-black dark:bg-slate-800 dark:text-white">{op.label}</option>
                         ))}
                       </select>
 
@@ -612,7 +612,7 @@ const FieldEditorModal: React.FC<FieldEditorModalProps> = ({
                         placeholder="Expected value (e.g. shipping)"
                         value={String(rule.value)}
                         onChange={(e) => handleUpdateRule(idx, 'value', e.target.value)}
-                        className="px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs bg-white dark:bg-slate-800"
+                        className="px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs bg-white dark:bg-slate-800 text-black dark:text-white font-medium placeholder:text-slate-500 dark:placeholder:text-slate-400 outline-none"
                       />
                     </div>
                   </div>

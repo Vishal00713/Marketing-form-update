@@ -100,10 +100,10 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
                 <select
                   value={selectedStatus}
                   onChange={(e) => setSelectedStatus(e.target.value as OrderStatus)}
-                  className="px-3 py-1.5 rounded-lg border border-purple-300 dark:border-purple-700 text-xs font-bold bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                  className="px-3 py-1.5 rounded-lg border border-purple-300 dark:border-purple-700 text-xs font-bold bg-white dark:bg-slate-800 text-black dark:text-white"
                 >
                   {STATUS_OPTIONS.map(opt => (
-                    <option key={opt.value} value={opt.value}>
+                    <option key={opt.value} value={opt.value} className="bg-white text-black dark:bg-slate-800 dark:text-white font-medium">
                       {opt.label}
                     </option>
                   ))}
@@ -116,7 +116,7 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
                   placeholder="Optional audit log note..."
                   value={operatorNote}
                   onChange={(e) => setOperatorNote(e.target.value)}
-                  className="flex-1 px-3 py-1.5 rounded-lg border border-blue-200 dark:border-blue-800 text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:ring-1 focus:ring-blue-500"
+                  className="flex-1 px-3 py-1.5 rounded-lg border border-blue-200 dark:border-blue-800 text-xs bg-white dark:bg-slate-800 text-black dark:text-white font-medium placeholder:text-slate-600 dark:placeholder:text-slate-400 outline-none focus:ring-1 focus:ring-blue-500"
                 />
                 <button
                   type="submit"
@@ -207,11 +207,11 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
                     <div className="text-black dark:text-slate-300 font-bold">Total Quantity: {order.totalQuantity}</div>
                   )}
 
-                  {order.formData?.specialNotes && (
+                  {(order.formData?.specialNotes || order.formData?.remarks || order.formData?.notes) && (
                     <div className="pt-2">
-                      <span className="text-black dark:text-slate-300 block mb-1 font-bold">Remarks / Site Notes:</span>
-                      <p className="bg-white dark:bg-slate-800 p-2.5 rounded border border-slate-300 dark:border-slate-700 text-black dark:text-slate-200 font-medium">
-                        {order.formData.specialNotes}
+                      <span className="text-black dark:text-slate-200 block mb-1 font-bold">Remarks / Site Notes:</span>
+                      <p className="bg-white dark:bg-slate-800 p-2.5 rounded border border-slate-300 dark:border-slate-700 text-black dark:text-white font-semibold">
+                        {order.formData?.specialNotes || order.formData?.remarks || order.formData?.notes}
                       </p>
                     </div>
                   )}
@@ -219,17 +219,17 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
               </div>
 
               {/* Uploaded Files */}
-              <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-700/80">
-                <h3 className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-                  <FileText className="w-3.5 h-3.5 text-purple-500" />
+              <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-300 dark:border-slate-700/80">
+                <h3 className="text-xs uppercase font-extrabold tracking-wider text-black dark:text-white mb-3 flex items-center gap-1.5">
+                  <FileText className="w-3.5 h-3.5 text-purple-600" />
                   <span>Proof Files ({order.files?.length || 0})</span>
                 </h3>
 
                 {order.files && order.files.length > 0 ? (
                   <div className="space-y-2">
                     {order.files.map(f => (
-                      <div key={f.id} className="flex items-center justify-between p-2 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs">
-                        <span className="truncate max-w-[200px] font-medium text-slate-800 dark:text-slate-200">
+                      <div key={f.id} className="flex items-center justify-between p-2 rounded bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs">
+                        <span className="truncate max-w-[200px] font-bold text-black dark:text-white">
                           {f.name}
                         </span>
                         {f.driveViewLink ? (
@@ -237,19 +237,19 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
                             href={f.driveViewLink}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-blue-600 hover:underline flex items-center gap-1 font-semibold"
+                            className="text-blue-700 dark:text-blue-400 hover:underline flex items-center gap-1 font-bold"
                           >
                             <ExternalLink className="w-3 h-3" />
                             <span>View on Drive</span>
                           </a>
                         ) : (
-                          <span className="text-slate-400">Attached</span>
+                          <span className="text-slate-600 dark:text-slate-400 font-semibold">Attached</span>
                         )}
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <p className="text-xs text-slate-400 italic">No files attached to this record.</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 font-medium italic">No files attached to this record.</p>
                 )}
               </div>
             </div>
@@ -257,22 +257,22 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
           </div>
 
           {/* Audit Trail / History */}
-          <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-700/80">
-            <h3 className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-3">
+          <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-300 dark:border-slate-700/80">
+            <h3 className="text-xs uppercase font-extrabold tracking-wider text-black dark:text-white mb-3">
               Status Change History
             </h3>
             <div className="space-y-2">
               {order.statusHistory.map((item) => (
                 <div key={item.id} className="flex items-start gap-3 text-xs py-1 border-b border-slate-200 dark:border-slate-700 last:border-0">
-                  <span className="text-[11px] text-slate-400 shrink-0 mt-0.5">
+                  <span className="text-[11px] text-slate-700 dark:text-slate-300 font-semibold shrink-0 mt-0.5">
                     {new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                   <div className="flex-1">
-                    <span className="font-bold text-slate-800 dark:text-slate-200 uppercase text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 mr-2">
+                    <span className="font-bold text-black dark:text-white uppercase text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 mr-2">
                       {item.status}
                     </span>
-                    <span className="text-slate-700 dark:text-slate-300">{item.note}</span>
-                    <span className="text-slate-400 ml-2">by {item.updatedBy}</span>
+                    <span className="text-black dark:text-white font-medium">{item.note}</span>
+                    <span className="text-slate-600 dark:text-slate-400 font-medium ml-2">by {item.updatedBy}</span>
                   </div>
                 </div>
               ))}
