@@ -15,7 +15,7 @@
         },
         "status": {
           "type": "string",
-          "enum": ["pending", "reviewing", "approved", "printing", "completed", "cancelled"]
+          "enum": ["pending", "proof_review", "reviewing", "approved", "printing", "finishing", "ready", "completed", "cancelled"]
         },
         "vendorName": {
           "type": "string",

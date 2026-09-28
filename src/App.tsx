@@ -103,7 +103,7 @@ export default function App() {
   useEffect(() => {
     testFirestoreConnection();
 
-    // Fetch cloud-persisted admin settings
+    // Fetch cloud-persisted admin settings (publicly readable)
     fetchAdminSettingsFromFirestore()
       .then((remote) => {
         if (remote) {
@@ -112,18 +112,6 @@ export default function App() {
       })
       .catch((err) => {
         console.log('Firebase settings sync info:', err);
-      });
-
-    // Fetch cloud-persisted orders
-    fetchOrdersFromFirestore()
-      .then((remoteOrders) => {
-        if (remoteOrders && remoteOrders.length > 0) {
-          setOrders(remoteOrders);
-          saveOrders(remoteOrders);
-        }
-      })
-      .catch((err) => {
-        console.log('Firebase orders sync info:', err);
       });
   }, []);
 
@@ -137,9 +125,22 @@ export default function App() {
     return () => unsubscribe();
   }, []);
 
-  // Real-time Firestore sync when administrator is active
+  // Real-time Firestore orders sync when administrator is active
   useEffect(() => {
     if (authUser) {
+      // 1. Fetch cloud-persisted orders for admin
+      fetchOrdersFromFirestore()
+        .then((remoteOrders) => {
+          if (remoteOrders && remoteOrders.length > 0) {
+            setOrders(remoteOrders);
+            saveOrders(remoteOrders);
+          }
+        })
+        .catch((err) => {
+          console.warn('Firebase orders sync info:', err);
+        });
+
+      // 2. Real-time subscription for live orders
       try {
         const unsubscribe = subscribeToOrders((cloudOrders) => {
           if (cloudOrders && cloudOrders.length > 0) {

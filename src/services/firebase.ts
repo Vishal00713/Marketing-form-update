@@ -146,6 +146,9 @@ export async function fetchOrderByIdFromFirestore(orderId: string): Promise<Prin
 
 export async function fetchOrdersFromFirestore(): Promise<PrintOrder[]> {
   const path = 'orders';
+  if (!auth.currentUser) {
+    return [];
+  }
   try {
     const q = query(collection(db, 'orders'), orderBy('createdAt', 'desc'));
     const snapshot = await getDocs(q);
@@ -160,6 +163,9 @@ export function subscribeToOrders(
   onError?: (err: Error) => void
 ) {
   const path = 'orders';
+  if (!auth.currentUser) {
+    return () => {};
+  }
   const q = query(collection(db, 'orders'), orderBy('createdAt', 'desc'));
   return onSnapshot(
     q,

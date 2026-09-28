@@ -39,7 +39,7 @@ service cloud.firestore {
       return data.keys().hasAll(['id', 'createdAt', 'status', 'vendorName', 'city', 'blBoard']) &&
         data.id is string && data.id.size() <= 128 &&
         data.createdAt is string && data.createdAt.size() <= 64 &&
-        data.status is string && data.status in ['pending', 'reviewing', 'approved', 'printing', 'completed', 'cancelled'] &&
+        data.status is string && data.status in ['pending', 'proof_review', 'reviewing', 'approved', 'printing', 'finishing', 'ready', 'completed', 'cancelled'] &&
         data.vendorName is string && data.vendorName.size() <= 200 &&
         data.city is string && data.city.size() <= 200 &&
         data.blBoard is string && data.blBoard.size() <= 200;
