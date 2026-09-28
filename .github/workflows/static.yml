@@ -34,9 +34,10 @@ jobs:
         run: npm install --include=dev
 
       - name: Build
-        env:
-          VITE_BASE_PATH: '/Marketing-form/'
-        run: npm run build
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          export VITE_BASE_PATH="/${REPO_NAME:-Marketing-form-update}/"
+          npm run build
 
       - name: Deploy to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4
