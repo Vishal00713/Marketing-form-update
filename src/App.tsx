@@ -240,9 +240,9 @@ export default function App() {
 
   return (
     <div 
-      className="min-h-screen text-slate-900 dark:text-slate-100 flex flex-col transition-colors selection:bg-[#673ab7] selection:text-white"
+      className="min-h-screen text-slate-900 dark:text-slate-100 flex flex-col transition-colors selection:bg-blue-600 selection:text-white"
       style={{
-        backgroundColor: currentView !== 'admin' ? (adminSettings.bgColor || '#f0ebf8') : undefined
+        backgroundColor: currentView !== 'admin' ? (adminSettings.bgColor || '#f8fafc') : undefined
       }}
     >
       

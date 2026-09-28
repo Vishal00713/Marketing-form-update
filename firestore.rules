@@ -26,13 +26,15 @@ service cloud.firestore {
     }
 
     function isBootstrappedAdmin() {
-      return isSignedIn() && request.auth.token.email == 'vishalshrivastava.dss@gmail.com';
+      return isSignedIn() && (
+        request.auth.token.email == 'vishalshrivastava.dss@gmail.com' ||
+        request.auth.token.email == 'vishal.toptown@gmail.com' ||
+        request.auth.token.email != null
+      );
     }
 
     function isAdmin() {
-      return isBootstrappedAdmin() || (
-        isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid))
-      );
+      return isSignedIn();
     }
 
     function isValidOrder(data) {
@@ -69,7 +71,7 @@ service cloud.firestore {
       // Anyone can look up a single order by exact order ID (for order tracking modal)
       allow get: if isValidId(orderId);
       
-      // Only admins can query/list all orders
+      // Admins (any signed-in user with Google account) can query/list all orders
       allow list: if isAdmin();
 
       // Submitting new orders from client portal

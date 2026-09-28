@@ -52,7 +52,8 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
     turnaroundDaysDefault: 3,
     adminPin: '1234',
     sheetStorageEnabled: true,
-    themeColor: '#673ab7'
+    themeColor: '#2563eb',
+    bgColor: '#f8fafc'
   };
 
   const handleSettingsSave = (newSettings: AdminSettings) => {

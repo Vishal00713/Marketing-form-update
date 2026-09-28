@@ -217,7 +217,8 @@ export const INITIAL_ADMIN_SETTINGS: AdminSettings = {
   spreadsheetId: '',
   spreadsheetUrl: '',
   sheetName: 'Weekly_Signage_2026',
-  themeColor: '#673ab7'
+  themeColor: '#2563eb',
+  bgColor: '#f8fafc'
 };
 
 // Seed sample submissions
@@ -392,7 +393,14 @@ export const loadAdminSettings = (): AdminSettings => {
       localStorage.setItem(STORAGE_KEYS.ADMIN_SETTINGS, JSON.stringify(INITIAL_ADMIN_SETTINGS));
       return INITIAL_ADMIN_SETTINGS;
     }
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    // Automatically migrate legacy purple theme to the clean Blue-White theme
+    if (parsed.themeColor === '#673ab7' || !parsed.themeColor) {
+      parsed.themeColor = '#2563eb';
+      parsed.bgColor = '#f8fafc';
+      localStorage.setItem(STORAGE_KEYS.ADMIN_SETTINGS, JSON.stringify(parsed));
+    }
+    return parsed;
   } catch {
     return INITIAL_ADMIN_SETTINGS;
   }

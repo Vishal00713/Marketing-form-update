@@ -32,8 +32,8 @@ export const GoogleFormConfirmation: React.FC<GoogleFormConfirmationProps> = ({
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const themeColor = adminSettings.themeColor || '#673ab7';
-  const bgColor = adminSettings.bgColor || '#f0ebf8';
+  const themeColor = adminSettings.themeColor || '#2563eb';
+  const bgColor = adminSettings.bgColor || '#f8fafc';
   const accentHeight = adminSettings.headerAccentHeight || 10;
 
   const emailHtml = generateEmailConfirmationHtml(order, adminSettings.businessName);

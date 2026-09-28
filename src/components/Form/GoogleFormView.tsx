@@ -81,8 +81,8 @@ export const GoogleFormView: React.FC<GoogleFormViewProps> = ({
     { id: 'row-3', qtyKey: 'artworkQty_3', typeKey: 'artworkType_3', index: 3 }
   ]);
 
-  const themeColor = adminSettings.themeColor || '#673ab7';
-  const bgColor = adminSettings.bgColor || '#f0ebf8';
+  const themeColor = adminSettings.themeColor || '#2563eb';
+  const bgColor = adminSettings.bgColor || '#f8fafc';
   const accentHeight = adminSettings.headerAccentHeight || 10;
   const fontClass = 
     adminSettings.fontFamily === 'serif' ? 'font-serif' :

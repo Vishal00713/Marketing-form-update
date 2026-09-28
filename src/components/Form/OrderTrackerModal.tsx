@@ -101,7 +101,7 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
         {/* Header */}
         <div className="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-850">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#673ab7] text-white flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center">
               <Search className="w-4 h-4" />
             </div>
             <div>
@@ -129,13 +129,13 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Enter Submission ID (e.g. WST-2026-1042) or Submitter Email"
-                className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <button
               type="submit"
               disabled={isSearchingOnline}
-              className="px-5 py-2.5 bg-[#673ab7] hover:bg-[#5a2e9d] text-white text-xs font-bold rounded-lg shadow-sm transition-all flex items-center justify-center min-w-[90px] disabled:opacity-70"
+              className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-lg shadow-sm transition-all flex items-center justify-center min-w-[90px] disabled:opacity-70 cursor-pointer"
             >
               {isSearchingOnline ? (
                 <>
@@ -159,13 +159,13 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
             <div className="space-y-6">
               
               {/* Order Banner */}
-              <div className="p-4 rounded-xl bg-purple-50/60 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="p-4 rounded-xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-sm text-[#673ab7] dark:text-purple-300">
+                    <span className="font-mono font-bold text-sm text-blue-600 dark:text-blue-400">
                       {selectedOrder.id}
                     </span>
-                    <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-900/60 text-[#673ab7] dark:text-purple-200">
+                    <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300">
                       {selectedOrder.status.replace('_', ' ')}
                     </span>
                   </div>
@@ -201,7 +201,7 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
                         key={step.status}
                         className={`flex items-start gap-3.5 p-3 rounded-lg border transition-all ${
                           isCurrent
-                            ? 'bg-purple-50/80 dark:bg-purple-950/40 border-purple-300 dark:border-purple-800'
+                            ? 'bg-blue-50/80 dark:bg-blue-950/40 border-blue-300 dark:border-blue-800'
                             : isDone
                               ? 'bg-emerald-50/40 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-900/40'
                               : 'bg-white dark:bg-slate-800/40 border-slate-200 dark:border-slate-800 opacity-60'
@@ -209,7 +209,7 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
                       >
                         <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
                           isCurrent
-                            ? 'bg-[#673ab7] text-white animate-pulse'
+                            ? 'bg-blue-600 text-white animate-pulse'
                             : isDone
                               ? 'bg-emerald-600 text-white'
                               : 'bg-slate-200 dark:bg-slate-700 text-slate-400'
@@ -225,7 +225,7 @@ export const OrderTrackerModal: React.FC<OrderTrackerModalProps> = ({
                           <div className="flex items-center justify-between">
                             <span className={`text-sm font-bold ${
                               isCurrent 
-                                ? 'text-[#673ab7] dark:text-purple-300' 
+                                ? 'text-blue-600 dark:text-blue-400' 
                                 : isDone 
                                   ? 'text-slate-900 dark:text-white' 
                                   : 'text-slate-500'

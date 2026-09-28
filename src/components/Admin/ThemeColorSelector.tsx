@@ -25,9 +25,10 @@ export interface PresetTheme {
 }
 
 export const PRESET_THEMES: PresetTheme[] = [
-  { id: 'google_purple', name: 'Google Purple (Classic)', hex: '#673ab7', bgHex: '#f0ebf8', category: 'standard' },
-  { id: 'indigo', name: 'Deep Indigo', hex: '#3f51b5', bgHex: '#ebedf8', category: 'standard' },
+  { id: 'simple_blue', name: 'Simple Royal Blue (Default)', hex: '#2563eb', bgHex: '#f8fafc', category: 'standard' },
+  { id: 'corporate_blue', name: 'Executive Navy Blue', hex: '#1e40af', bgHex: '#f1f5f9', category: 'standard' },
   { id: 'google_blue', name: 'Google Blue', hex: '#1a73e8', bgHex: '#e8f0fe', category: 'standard' },
+  { id: 'sky_blue', name: 'Clean Sky Blue', hex: '#0284c7', bgHex: '#f0f9ff', category: 'standard' },
   { id: 'teal', name: 'Teal Turquoise', hex: '#009688', bgHex: '#e0f2f1', category: 'standard' },
   { id: 'emerald', name: 'Forest Emerald', hex: '#0f9d58', bgHex: '#e6f4ea', category: 'standard' },
   { id: 'amber', name: 'Golden Amber', hex: '#f4b400', bgHex: '#fef7e0', category: 'brand' },
@@ -35,7 +36,7 @@ export const PRESET_THEMES: PresetTheme[] = [
   { id: 'orange', name: 'Vibrant Orange', hex: '#ff5722', bgHex: '#fbe9e7', category: 'brand' },
   { id: 'rose', name: 'Rose Quartz', hex: '#e91e63', bgHex: '#fce4ec', category: 'vibrant' },
   { id: 'violet', name: 'Royal Violet', hex: '#4a148c', bgHex: '#ede7f6', category: 'vibrant' },
-  { id: 'cyan', name: 'Sky Cyan', hex: '#00bcd4', bgHex: '#e0f7fa', category: 'vibrant' },
+  { id: 'google_purple', name: 'Classic Purple', hex: '#673ab7', bgHex: '#f0ebf8', category: 'standard' },
   { id: 'slate', name: 'Charcoal Slate', hex: '#455a64', bgHex: '#eceff1', category: 'standard' },
 ];
 
@@ -57,7 +58,7 @@ export function hexToRgb(hex: string): { r: number; g: number; b: number } | nul
 
 export function blendWithWhite(hex: string, percentWhite: number): string {
   const rgb = hexToRgb(hex);
-  if (!rgb) return '#f0ebf8';
+  if (!rgb) return '#f8fafc';
   const r = Math.round(rgb.r + (255 - rgb.r) * (percentWhite / 100));
   const g = Math.round(rgb.g + (255 - rgb.g) * (percentWhite / 100));
   const b = Math.round(rgb.b + (255 - rgb.b) * (percentWhite / 100));
@@ -68,8 +69,8 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
   settings,
   onUpdateSettings
 }) => {
-  const [selectedHex, setSelectedHex] = useState(settings.themeColor || '#673ab7');
-  const [selectedBgHex, setSelectedBgHex] = useState(settings.bgColor || '#f0ebf8');
+  const [selectedHex, setSelectedHex] = useState(settings.themeColor || '#2563eb');
+  const [selectedBgHex, setSelectedBgHex] = useState(settings.bgColor || '#f8fafc');
   const [selectedFont, setSelectedFont] = useState<'sans' | 'roboto' | 'serif' | 'playful'>(
     settings.fontFamily || 'sans'
   );
@@ -80,10 +81,10 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
 
   // Generate dynamic background options based on current theme color
   const bgOptions = [
-    { label: 'Harmonic Pastel Tint', value: blendWithWhite(selectedHex, 93) },
-    { label: 'Soft Wash Tint', value: blendWithWhite(selectedHex, 86) },
-    { label: 'Subtle Off-White', value: '#f8f9fa' },
-    { label: 'Pure White', value: '#ffffff' }
+    { label: 'Clean White', value: '#ffffff' },
+    { label: 'Subtle Off-White', value: '#f8fafc' },
+    { label: 'Soft Wash Tint', value: blendWithWhite(selectedHex, 90) },
+    { label: 'Harmonic Pastel Tint', value: blendWithWhite(selectedHex, 95) }
   ];
 
   const handleSelectPreset = (preset: PresetTheme) => {
@@ -94,7 +95,7 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
   const handleCustomColorChange = (color: string) => {
     setSelectedHex(color);
     // Automatically calculate a matching light pastel background tint
-    setSelectedBgHex(blendWithWhite(color, 93));
+    setSelectedBgHex(blendWithWhite(color, 95));
   };
 
   const handleApplyTheme = () => {
@@ -111,14 +112,14 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
   };
 
   const handleResetToGoogleDefault = () => {
-    setSelectedHex('#673ab7');
-    setSelectedBgHex('#f0ebf8');
+    setSelectedHex('#2563eb');
+    setSelectedBgHex('#f8fafc');
     setSelectedFont('sans');
     setSelectedAccentHeight(10);
     const updated: AdminSettings = {
       ...settings,
-      themeColor: '#673ab7',
-      bgColor: '#f0ebf8',
+      themeColor: '#2563eb',
+      bgColor: '#f8fafc',
       fontFamily: 'sans',
       headerAccentHeight: 10
     };
@@ -244,7 +245,7 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
                   type="text"
                   value={selectedHex}
                   onChange={(e) => handleCustomColorChange(e.target.value)}
-                  placeholder="#673ab7"
+                  placeholder="#2563eb"
                   className="w-24 px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono uppercase text-slate-900 dark:text-white"
                 />
               </div>

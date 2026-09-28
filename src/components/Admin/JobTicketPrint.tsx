@@ -20,7 +20,7 @@ export const JobTicketPrint: React.FC<JobTicketPrintProps> = ({ order, onClose }
         <div className="flex items-center gap-3">
           <button
             onClick={() => window.print()}
-            className="px-4 py-2 bg-[#673ab7] hover:bg-[#5a2e9d] text-white font-bold rounded-lg text-xs flex items-center gap-2"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-xs flex items-center gap-2 cursor-pointer shadow-xs"
           >
             <Printer className="w-4 h-4" />
             <span>Print Now</span>

@@ -34,16 +34,16 @@ export function generateEmailConfirmationHtml(order: PrintOrder, businessName = 
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1e293b; background-color: #f8fafc; margin: 0; padding: 20px; }
     .email-container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08); border: 1px solid #e2e8f0; }
-    .email-header { background: #673ab7; color: #ffffff; padding: 28px 24px; text-align: center; }
+    .email-header { background: #2563eb; color: #ffffff; padding: 28px 24px; text-align: center; }
     .email-header h1 { margin: 0; font-size: 22px; font-weight: 700; }
     .email-header p { margin: 6px 0 0 0; opacity: 0.9; font-size: 13px; }
     .tracking-badge { display: inline-block; background: rgba(255, 255, 255, 0.2); padding: 5px 14px; border-radius: 9999px; font-family: monospace; font-weight: 600; font-size: 14px; margin-top: 12px; }
     .email-body { padding: 24px; }
-    .info-box { background: #fdfaff; border-radius: 8px; padding: 14px; margin: 16px 0; border-left: 4px solid #673ab7; }
+    .info-box { background: #eff6ff; border-radius: 8px; padding: 14px; margin: 16px 0; border-left: 4px solid #2563eb; }
     .detail-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #e2e8f0; font-size: 13px; }
     .detail-label { color: #64748b; font-weight: 500; }
     .detail-val { color: #0f172a; font-weight: 600; text-align: right; }
-    .total-row { display: flex; justify-content: space-between; padding: 12px 0 4px 0; font-size: 16px; font-weight: 700; color: #673ab7; border-top: 2px solid #cbd5e1; }
+    .total-row { display: flex; justify-content: space-between; padding: 12px 0 4px 0; font-size: 16px; font-weight: 700; color: #2563eb; border-top: 2px solid #cbd5e1; }
     .email-footer { background: #f8fafc; padding: 16px 24px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 12px; color: #64748b; }
   </style>
 </head>
@@ -60,14 +60,14 @@ export function generateEmailConfirmationHtml(order: PrintOrder, businessName = 
       <p>Your response for <strong>Weekly Signage / Artwork Quantity Tracker</strong> has been recorded and queued for audit verification.</p>
 
       <div class="info-box">
-        <p style="margin: 0; font-size: 14px; font-weight: 600; color: #1e1b4b;">Vendor: ${order.vendorName || order.requester?.fullName || 'N/A'}</p>
+        <p style="margin: 0; font-size: 14px; font-weight: 600; color: #1e3a8a;">Vendor: ${order.vendorName || order.requester?.fullName || 'N/A'}</p>
         <p style="margin: 4px 0 0 0; font-size: 12px; color: #64748b;">BL Board: ${order.blBoard || 'N/A'} &bull; City: ${order.city || 'N/A'}</p>
       </div>
 
       <div style="margin: 16px 0;">
         <div class="detail-row">
           <span class="detail-label">Status:</span>
-          <span class="detail-val" style="color: #673ab7; text-transform: uppercase;">Recorded / In Review</span>
+          <span class="detail-val" style="color: #2563eb; text-transform: uppercase;">Recorded / In Review</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">Submission Date:</span>
@@ -100,7 +100,7 @@ export function generateEmailConfirmationHtml(order: PrintOrder, businessName = 
         </div>
         ${order.files.map(f => `
           <div style="font-size: 12px; color: #0f172a; padding: 4px 0;">
-            &bull; ${f.name} ${f.driveViewLink ? `<a href="${f.driveViewLink}" target="_blank" style="color: #673ab7;">(View on Drive)</a>` : ''}
+            &bull; ${f.name} ${f.driveViewLink ? `<a href="${f.driveViewLink}" target="_blank" style="color: #2563eb;">(View on Drive)</a>` : ''}
           </div>
         `).join('')}
       </div>` : ''}

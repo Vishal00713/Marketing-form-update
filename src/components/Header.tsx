@@ -77,15 +77,15 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-3">
           <button 
             onClick={() => setCurrentView('form')}
-            className="flex items-center gap-2.5 text-left group focus:outline-none rounded-lg p-1"
+            className="flex items-center gap-2.5 text-left group focus:outline-none rounded-lg p-1 cursor-pointer"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#673ab7] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
               <Layers className="w-4 h-4" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-bold text-sm tracking-tight text-slate-900 dark:text-white">Signage Tracker</span>
-                <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-purple-100 dark:bg-purple-950/80 text-[#673ab7] dark:text-purple-300 border border-purple-200 dark:border-purple-800">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
                   Google Form
                 </span>
               </div>
@@ -97,9 +97,9 @@ export const Header: React.FC<HeaderProps> = ({
         <nav className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-lg border border-slate-200/80 dark:border-slate-700/80">
           <button
             onClick={() => setCurrentView('form')}
-            className={`px-3 py-1 text-xs font-semibold rounded-md transition-all ${
+            className={`px-3 py-1 text-xs font-semibold rounded-md transition-all cursor-pointer ${
               currentView === 'form' || currentView === 'confirmation'
-                ? 'bg-white dark:bg-slate-900 text-[#673ab7] dark:text-purple-300 shadow-xs'
+                ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
@@ -108,7 +108,7 @@ export const Header: React.FC<HeaderProps> = ({
           
           <button
             onClick={openTracker}
-            className="px-3 py-1 text-xs font-semibold rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 transition-all"
+            className="px-3 py-1 text-xs font-semibold rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 transition-all cursor-pointer"
           >
             <Search className="w-3.5 h-3.5" />
             <span>Track Submission</span>
@@ -116,13 +116,13 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             onClick={() => setCurrentView('admin')}
-            className={`px-3 py-1 text-xs font-semibold rounded-md transition-all flex items-center gap-1.5 ${
+            className={`px-3 py-1 text-xs font-semibold rounded-md transition-all flex items-center gap-1.5 cursor-pointer ${
               currentView === 'admin'
-                ? 'bg-white dark:bg-slate-900 text-[#673ab7] dark:text-purple-300 shadow-xs'
+                ? 'bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-xs'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            <ShieldCheck className="w-3.5 h-3.5 text-[#673ab7]" />
+            <ShieldCheck className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             <span>Backend Settings (/admin)</span>
           </button>
         </nav>
@@ -172,7 +172,7 @@ export const Header: React.FC<HeaderProps> = ({
                   className="w-7 h-7 rounded-full border border-slate-300 dark:border-slate-700 object-cover"
                 />
               ) : (
-                <div className="w-7 h-7 rounded-full bg-purple-100 dark:bg-purple-900/60 text-[#673ab7] flex items-center justify-center text-xs font-bold">
+                <div className="w-7 h-7 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-600 dark:text-blue-300 flex items-center justify-center text-xs font-bold">
                   {user.email?.charAt(0).toUpperCase()}
                 </div>
               )}

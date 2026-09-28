@@ -40,7 +40,7 @@ interface AdminPortalProps {
   onSettingsUpdated: (settings: AdminSettings) => void;
   user: User | null;
   accessToken: string | null;
-  onGoogleAuth: (user: User, token: string) => void;
+  onGoogleAuth: (user: User, token: string | null) => void;
   onPromptGoogleAuth: () => void;
   onViewForm?: () => void;
 }
@@ -198,13 +198,13 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
       {/* Top Admin Bar */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#673ab7] text-white flex items-center justify-center shadow-md shadow-purple-500/20">
+          <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md shadow-blue-500/20">
             <Sliders className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-xl font-bold text-slate-900 dark:text-white">Signage Operations & cPanel</h1>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
+              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
                 Form Admin
               </span>
             </div>
@@ -218,17 +218,17 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
           {onViewForm && (
             <button
               onClick={onViewForm}
-              className="px-3.5 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 flex items-center gap-1.5 transition-colors shadow-xs"
+              className="px-3.5 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer"
               title="Return to Public Google Form"
             >
-              <Eye className="w-3.5 h-3.5" style={{ color: adminSettings.themeColor || '#673ab7' }} />
+              <Eye className="w-3.5 h-3.5" style={{ color: adminSettings.themeColor || '#2563eb' }} />
               <span>Preview Public Form</span>
             </button>
           )}
 
           <button
             onClick={() => setIsAuthenticated(false)}
-            className="px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 transition-colors"
+            className="px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
           >
             <LogOut className="w-3.5 h-3.5" />
             <span>Lock Admin</span>
@@ -240,12 +240,12 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
       <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-1 overflow-x-auto">
         <button
           onClick={() => setCurrentTab('orders')}
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 shrink-0 ${
+          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
             currentTab === 'orders'
               ? 'text-white shadow-md'
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
-          style={currentTab === 'orders' ? { backgroundColor: adminSettings.themeColor || '#673ab7' } : undefined}
+          style={currentTab === 'orders' ? { backgroundColor: adminSettings.themeColor || '#2563eb' } : undefined}
         >
           <Layers className="w-4 h-4" />
           <span>Submissions Dashboard ({orders.length})</span>
@@ -253,12 +253,12 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
 
         <button
           onClick={() => setCurrentTab('form_builder')}
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 shrink-0 ${
+          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
             currentTab === 'form_builder'
               ? 'text-white shadow-md'
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
-          style={currentTab === 'form_builder' ? { backgroundColor: adminSettings.themeColor || '#673ab7' } : undefined}
+          style={currentTab === 'form_builder' ? { backgroundColor: adminSettings.themeColor || '#2563eb' } : undefined}
         >
           <Sliders className="w-4 h-4" />
           <span>Form Questions & Conditional cPanel</span>
@@ -266,12 +266,12 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
 
         <button
           onClick={() => setCurrentTab('theme')}
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 shrink-0 ${
+          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
             currentTab === 'theme'
               ? 'text-white shadow-md'
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
-          style={currentTab === 'theme' ? { backgroundColor: adminSettings.themeColor || '#673ab7' } : undefined}
+          style={currentTab === 'theme' ? { backgroundColor: adminSettings.themeColor || '#2563eb' } : undefined}
         >
           <Palette className="w-4 h-4" />
           <span>Theme & Color Customizer</span>
@@ -279,12 +279,12 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
 
         <button
           onClick={() => setCurrentTab('sheets')}
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 shrink-0 ${
+          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
             currentTab === 'sheets'
               ? 'text-white shadow-md'
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
-          style={currentTab === 'sheets' ? { backgroundColor: adminSettings.themeColor || '#673ab7' } : undefined}
+          style={currentTab === 'sheets' ? { backgroundColor: adminSettings.themeColor || '#2563eb' } : undefined}
         >
           <FileSpreadsheet className="w-4 h-4" />
           <span>Google Sheets & Monthly Reporting</span>
@@ -292,12 +292,12 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
 
         <button
           onClick={() => setCurrentTab('settings')}
-          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 shrink-0 ${
+          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
             currentTab === 'settings'
               ? 'text-white shadow-md'
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
-          style={currentTab === 'settings' ? { backgroundColor: adminSettings.themeColor || '#673ab7' } : undefined}
+          style={currentTab === 'settings' ? { backgroundColor: adminSettings.themeColor || '#2563eb' } : undefined}
         >
           <Settings className="w-4 h-4" />
           <span>Form Settings</span>
@@ -313,7 +313,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
             <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-xs uppercase font-bold text-slate-400">Total Submissions</span>
-                <div className="w-8 h-8 rounded-lg bg-purple-100 dark:bg-purple-950 text-[#673ab7] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-600 flex items-center justify-center">
                   <Layers className="w-4 h-4" />
                 </div>
               </div>
@@ -576,22 +576,22 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
             <div className="flex items-center gap-3">
               <div 
                 className="w-10 h-10 rounded-xl shadow-sm flex items-center justify-center text-white font-bold text-xs"
-                style={{ backgroundColor: adminSettings.themeColor || '#673ab7' }}
+                style={{ backgroundColor: adminSettings.themeColor || '#2563eb' }}
               >
                 <Palette className="w-5 h-5" />
               </div>
               <div>
                 <span className="text-xs font-bold text-slate-900 dark:text-white block">Active Color Theme</span>
                 <span className="text-xs text-slate-500 font-mono">
-                  {adminSettings.themeColor || '#673ab7'} &bull; Background: {adminSettings.bgColor || '#f0ebf8'}
+                  {adminSettings.themeColor || '#2563eb'} &bull; Background: {adminSettings.bgColor || '#f8fafc'}
                 </span>
               </div>
             </div>
             <button
               type="button"
               onClick={() => setCurrentTab('theme')}
-              className="px-3.5 py-1.5 rounded-lg text-white text-xs font-bold shadow-xs hover:opacity-95 transition-opacity flex items-center gap-1.5"
-              style={{ backgroundColor: adminSettings.themeColor || '#673ab7' }}
+              className="px-3.5 py-1.5 rounded-lg text-white text-xs font-bold shadow-xs hover:opacity-95 transition-opacity flex items-center gap-1.5 cursor-pointer"
+              style={{ backgroundColor: adminSettings.themeColor || '#2563eb' }}
             >
               <Palette className="w-3.5 h-3.5" />
               <span>Customize Colors</span>
@@ -657,7 +657,7 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
 
               <button
                 type="submit"
-                className="px-5 py-2.5 rounded-lg bg-[#673ab7] hover:bg-[#5a2e9d] text-white text-xs font-bold shadow-sm transition-all"
+                className="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-sm transition-all cursor-pointer"
               >
                 Save Settings
               </button>

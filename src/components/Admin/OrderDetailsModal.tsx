@@ -116,12 +116,12 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
                   placeholder="Optional audit log note..."
                   value={operatorNote}
                   onChange={(e) => setOperatorNote(e.target.value)}
-                  className="flex-1 px-3 py-1.5 rounded-lg border border-purple-200 dark:border-purple-800 text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:ring-1 focus:ring-purple-500"
+                  className="flex-1 px-3 py-1.5 rounded-lg border border-blue-200 dark:border-blue-800 text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-white outline-none focus:ring-1 focus:ring-blue-500"
                 />
                 <button
                   type="submit"
                   disabled={isUpdating}
-                  className="px-4 py-1.5 rounded-lg bg-[#673ab7] hover:bg-[#5a2e9d] text-white font-bold text-xs shadow-sm shrink-0"
+                  className="px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm shrink-0 cursor-pointer"
                 >
                   Apply
                 </button>
@@ -136,7 +136,7 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
             <div className="space-y-4">
               <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-700/80">
                 <h3 className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5 text-purple-500" />
+                  <User className="w-3.5 h-3.5 text-blue-500" />
                   <span>Vendor & Site Information</span>
                 </h3>
                 <div className="space-y-2 text-xs">
@@ -150,7 +150,7 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
                   </div>
                   <div className="flex justify-between py-1 border-b border-slate-200 dark:border-slate-700">
                     <span className="text-slate-500">BL Board Identifier:</span>
-                    <span className="font-mono font-bold text-purple-600 dark:text-purple-400">{order.blBoard || 'N/A'}</span>
+                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400">{order.blBoard || 'N/A'}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-slate-200 dark:border-slate-700">
                     <span className="text-slate-500">Submitter Email:</span>
@@ -168,7 +168,7 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
               {/* Dates & Timeline */}
               <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-700/80">
                 <h3 className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-purple-500" />
+                  <Calendar className="w-3.5 h-3.5 text-blue-500" />
                   <span>Work Period Dates</span>
                 </h3>
                 <div className="space-y-2 text-xs">
