@@ -136,11 +136,11 @@ export const FormBuilderCpanel: React.FC<FormBuilderCpanelProps> = ({
       {/* CPanel Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white dark:bg-slate-850 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
         <div>
-          <h2 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
-            <Sliders className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
+          <h2 className="text-xl font-black text-black dark:text-white flex items-center gap-2">
+            <Sliders className="w-5 h-5 text-blue-600 dark:text-blue-400" />
             <span>Form Builder & Conditional Logic Engine</span>
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-medium mt-0.5">
             Customize input types, validation requirements, and dynamic visibility rules.
           </p>
         </div>
@@ -148,15 +148,15 @@ export const FormBuilderCpanel: React.FC<FormBuilderCpanelProps> = ({
         <div className="flex items-center gap-2">
           <button
             onClick={handleResetDefaults}
-            className="px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center gap-1.5 transition-colors"
+            className="px-3 py-2 rounded-xl text-xs font-bold text-black dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center gap-1.5 transition-colors cursor-pointer"
           >
-            <RotateCcw className="w-3.5 h-3.5" />
+            <RotateCcw className="w-3.5 h-3.5 text-black dark:text-slate-200" />
             <span>Reset Defaults</span>
           </button>
 
           <button
             onClick={startCreateField}
-            className="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-500/20 flex items-center gap-1.5 transition-all"
+            className="px-4 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-500/20 flex items-center gap-1.5 transition-all cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             <span>Add New Field</span>
@@ -165,7 +165,7 @@ export const FormBuilderCpanel: React.FC<FormBuilderCpanelProps> = ({
       </div>
 
       {notification && (
-        <div className="p-3 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-xs font-semibold rounded-2xl flex items-center gap-2 animate-fadeIn">
+        <div className="p-3 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 text-xs font-bold rounded-2xl flex items-center gap-2 animate-fadeIn">
           <Check className="w-4 h-4 text-emerald-600" />
           <span>{notification}</span>
         </div>
@@ -175,40 +175,40 @@ export const FormBuilderCpanel: React.FC<FormBuilderCpanelProps> = ({
       <div className="flex items-center gap-2 overflow-x-auto pb-1">
         <button
           onClick={() => setActiveStepFilter('all')}
-          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
+          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
             activeStepFilter === 'all'
               ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'
-              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700'
+              : 'bg-white dark:bg-slate-800 text-black dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:bg-slate-100'
           }`}
         >
           All Steps ({fields.length})
         </button>
         <button
           onClick={() => setActiveStepFilter(1)}
-          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
+          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
             activeStepFilter === 1
               ? 'bg-blue-600 text-white'
-              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700'
+              : 'bg-white dark:bg-slate-800 text-black dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:bg-slate-100'
           }`}
         >
           Step 1: Requester Details ({fields.filter(f => f.stepNumber === 1).length})
         </button>
         <button
           onClick={() => setActiveStepFilter(2)}
-          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
+          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
             activeStepFilter === 2
               ? 'bg-blue-600 text-white'
-              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700'
+              : 'bg-white dark:bg-slate-800 text-black dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:bg-slate-100'
           }`}
         >
           Step 2: Print Specifications ({fields.filter(f => f.stepNumber === 2).length})
         </button>
         <button
           onClick={() => setActiveStepFilter(3)}
-          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
+          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
             activeStepFilter === 3
               ? 'bg-blue-600 text-white'
-              : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700'
+              : 'bg-white dark:bg-slate-800 text-black dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:bg-slate-100'
           }`}
         >
           Step 3: Finishing & Fulfillment ({fields.filter(f => f.stepNumber === 3).length})
@@ -223,40 +223,40 @@ export const FormBuilderCpanel: React.FC<FormBuilderCpanelProps> = ({
           return (
             <div
               key={field.id}
-              className="bg-white dark:bg-slate-850 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-slate-300 dark:hover:border-slate-700 transition-all"
+              className="bg-white dark:bg-slate-850 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:border-slate-400 dark:hover:border-slate-700 transition-all"
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-bold text-sm text-slate-900 dark:text-white">
+                  <span className="font-bold text-sm text-black dark:text-white">
                     {field.label}
                   </span>
                   {field.required ? (
-                    <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300">
+                    <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-red-100 dark:bg-red-950 text-red-800 dark:text-red-300 border border-red-200">
                       Required
                     </span>
                   ) : (
-                    <span className="text-[10px] uppercase font-semibold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500">
+                    <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-black dark:text-slate-300">
                       Optional
                     </span>
                   )}
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-900">
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-900">
                     Type: {field.type}
                   </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-black dark:text-slate-300 border border-slate-200">
                     Step {field.stepNumber}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
-                  <span className="font-mono text-[11px] text-slate-400">ID: {field.id}</span>
+                <div className="flex items-center gap-3 text-xs text-slate-800 dark:text-slate-200 font-medium">
+                  <span className="font-mono text-[11px] font-bold text-black dark:text-slate-300">ID: {field.id}</span>
                   {field.placeholder && (
-                    <span className="truncate max-w-[200px]">Placeholder: "{field.placeholder}"</span>
+                    <span className="truncate max-w-[200px] text-slate-800 dark:text-slate-200">Placeholder: "{field.placeholder}"</span>
                   )}
                 </div>
 
                 {/* Conditional Rules Tag */}
                 {hasRules && (
-                  <div className="pt-1 flex items-center gap-1.5 text-xs text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2.5 py-1 rounded-xl border border-amber-200 dark:border-amber-900 w-fit">
+                  <div className="pt-1 flex items-center gap-1.5 text-xs text-amber-900 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 px-2.5 py-1 rounded-xl border border-amber-300 dark:border-amber-900 w-fit font-medium">
                     <GitBranch className="w-3.5 h-3.5" />
                     <span>
                       Conditional: Shows when <strong>{field.conditionalRules![0].fieldId}</strong> {field.conditionalRules![0].operator.replace('_', ' ')} "{String(field.conditionalRules![0].value)}"
@@ -270,7 +270,7 @@ export const FormBuilderCpanel: React.FC<FormBuilderCpanelProps> = ({
                 <button
                   onClick={() => handleMoveField(index, 'up')}
                   disabled={index === 0}
-                  className="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30"
+                  className="p-1.5 text-slate-700 hover:text-black dark:text-slate-300 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30 cursor-pointer"
                   title="Move Up"
                 >
                   <MoveUp className="w-4 h-4" />
@@ -278,7 +278,7 @@ export const FormBuilderCpanel: React.FC<FormBuilderCpanelProps> = ({
                 <button
                   onClick={() => handleMoveField(index, 'down')}
                   disabled={index === fields.length - 1}
-                  className="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30"
+                  className="p-1.5 text-slate-700 hover:text-black dark:text-slate-300 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30 cursor-pointer"
                   title="Move Down"
                 >
                   <MoveDown className="w-4 h-4" />
@@ -288,14 +288,14 @@ export const FormBuilderCpanel: React.FC<FormBuilderCpanelProps> = ({
                     setEditingField(field);
                     setIsCreatingNew(false);
                   }}
-                  className="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold text-xs hover:bg-slate-200 dark:hover:bg-slate-750 flex items-center gap-1 transition-colors"
+                  className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-black dark:text-white font-bold text-xs flex items-center gap-1 transition-colors border border-slate-300 dark:border-slate-700 cursor-pointer"
                 >
-                  <Edit3 className="w-3.5 h-3.5" />
+                  <Edit3 className="w-3.5 h-3.5 text-black dark:text-white" />
                   <span>Configure</span>
                 </button>
                 <button
                   onClick={() => handleDeleteField(field.id)}
-                  className="p-1.5 text-slate-400 hover:text-red-500 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                  className="p-1.5 text-slate-700 hover:text-red-600 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                   title="Delete field"
                 >
                   <Trash2 className="w-4 h-4" />

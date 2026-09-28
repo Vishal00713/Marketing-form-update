@@ -64,10 +64,10 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
           <ShieldCheck className="w-8 h-8" />
         </div>
 
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-black dark:text-white">
           PrintCraft Admin cPanel
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+        <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-medium mt-1">
           Signage & Marketing Management Portal
         </p>
 
@@ -77,7 +77,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
             type="button"
             onClick={handleGoogleLogin}
             disabled={isSigningIn}
-            className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-blue-50/50 dark:hover:bg-slate-750 text-slate-800 dark:text-slate-200 font-semibold text-sm shadow-xs transition-all active:scale-[0.99] disabled:opacity-60 cursor-pointer"
+            className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-black dark:text-slate-200 font-bold text-sm shadow-xs transition-all active:scale-[0.99] disabled:opacity-60 cursor-pointer"
           >
             <div className="w-5 h-5 shrink-0">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
@@ -93,10 +93,10 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
           {/* Divider */}
           <div className="relative py-2">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-200 dark:border-slate-800" />
+              <div className="w-full border-t border-slate-300 dark:border-slate-800" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white dark:bg-slate-900 px-3 text-slate-400 font-semibold tracking-wider">
+              <span className="bg-white dark:bg-slate-900 px-3 text-black dark:text-slate-300 font-bold tracking-wider">
                 Or Sign In with Admin PIN
               </span>
             </div>
@@ -105,13 +105,13 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
           {/* Option 2: Admin PIN */}
           <form onSubmit={handlePinSubmit} className="space-y-3.5">
             <div className="relative">
-              <Key className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Key className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600 dark:text-slate-400" />
               <input
                 type="password"
                 value={pin}
                 onChange={(e) => setPin(e.target.value)}
                 placeholder="Enter Admin PIN"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm font-medium text-black dark:text-white placeholder:text-slate-600 dark:placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
               />
             </div>
 
@@ -125,12 +125,12 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({
           </form>
 
           {/* Quick Access Helper */}
-          <div className="pt-2 text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1.5 flex-wrap">
+          <div className="pt-2 text-xs text-black dark:text-slate-200 font-bold flex items-center justify-center gap-1.5 flex-wrap">
             <span>Default PIN:</span>
             <button
               type="button"
               onClick={handleQuickAccess}
-              className="bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 px-2 py-0.5 rounded-md font-mono font-bold text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800 transition-colors cursor-pointer"
+              className="bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/80 px-2.5 py-0.5 rounded-md font-mono font-bold text-blue-700 dark:text-blue-400 border border-blue-300 dark:border-blue-800 transition-colors cursor-pointer"
               title="Click to fill PIN & login instantly"
             >
               admin123 (Click for 1-Click Access)

@@ -134,55 +134,55 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
             
             {/* Vendor & Location Details */}
             <div className="space-y-4">
-              <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-700/80">
-                <h3 className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5 text-blue-500" />
+              <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-300 dark:border-slate-700/80">
+                <h3 className="text-xs uppercase font-extrabold tracking-wider text-black dark:text-white mb-3 flex items-center gap-1.5">
+                  <User className="w-3.5 h-3.5 text-blue-600" />
                   <span>Vendor & Site Information</span>
                 </h3>
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between py-1 border-b border-slate-200 dark:border-slate-700">
-                    <span className="text-slate-500">Vendor Name:</span>
-                    <span className="font-bold text-slate-900 dark:text-white">{order.vendorName || order.requester?.fullName}</span>
+                    <span className="text-black dark:text-slate-300 font-bold">Vendor Name:</span>
+                    <span className="font-bold text-black dark:text-white">{order.vendorName || order.requester?.fullName}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-slate-200 dark:border-slate-700">
-                    <span className="text-slate-500">City / Location:</span>
-                    <span className="font-semibold text-slate-900 dark:text-white">{order.city || 'N/A'}</span>
+                    <span className="text-black dark:text-slate-300 font-bold">City / Location:</span>
+                    <span className="font-bold text-black dark:text-white">{order.city || 'N/A'}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-slate-200 dark:border-slate-700">
-                    <span className="text-slate-500">BL Board Identifier:</span>
-                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400">{order.blBoard || 'N/A'}</span>
+                    <span className="text-black dark:text-slate-300 font-bold">BL Board Identifier:</span>
+                    <span className="font-mono font-bold text-blue-700 dark:text-blue-400">{order.blBoard || 'N/A'}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-slate-200 dark:border-slate-700">
-                    <span className="text-slate-500">Submitter Email:</span>
-                    <a href={`mailto:${order.requester?.email || order.formData?.submitterEmail}`} className="font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+                    <span className="text-black dark:text-slate-300 font-bold">Submitter Email:</span>
+                    <a href={`mailto:${order.requester?.email || order.formData?.submitterEmail}`} className="font-bold text-blue-700 dark:text-blue-400 hover:underline">
                       {order.requester?.email || order.formData?.submitterEmail}
                     </a>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-slate-500">Total Artwork Units:</span>
-                    <span className="font-bold text-slate-900 dark:text-white">{order.totalQuantity} units</span>
+                    <span className="text-black dark:text-slate-300 font-bold">Total Artwork Units:</span>
+                    <span className="font-bold text-black dark:text-white">{order.totalQuantity} units</span>
                   </div>
                 </div>
               </div>
 
               {/* Dates & Timeline */}
-              <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-700/80">
-                <h3 className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-blue-500" />
+              <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-300 dark:border-slate-700/80">
+                <h3 className="text-xs uppercase font-extrabold tracking-wider text-black dark:text-white mb-3 flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5 text-blue-600" />
                   <span>Work Period Dates</span>
                 </h3>
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between py-1 border-b border-slate-200 dark:border-slate-700">
-                    <span className="text-slate-500">Work Star Date:</span>
-                    <span className="font-bold text-slate-900 dark:text-white">{order.workStartDate || order.formData?.workStartDate || 'N/A'}</span>
+                    <span className="text-black dark:text-slate-300 font-bold">Work Star Date:</span>
+                    <span className="font-bold text-black dark:text-white">{order.workStartDate || order.formData?.workStartDate || 'N/A'}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-slate-200 dark:border-slate-700">
-                    <span className="text-slate-500">Week Ending Date:</span>
-                    <span className="font-bold text-slate-900 dark:text-white">{order.weekEndingDate || order.formData?.weekEndingDate || 'N/A'}</span>
+                    <span className="text-black dark:text-slate-300 font-bold">Week Ending Date:</span>
+                    <span className="font-bold text-black dark:text-white">{order.weekEndingDate || order.formData?.weekEndingDate || 'N/A'}</span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-slate-500">Recorded Timestamp:</span>
-                    <span className="text-slate-600 dark:text-slate-300">{new Date(order.createdAt).toLocaleString()}</span>
+                    <span className="text-black dark:text-slate-300 font-bold">Recorded Timestamp:</span>
+                    <span className="text-slate-800 dark:text-slate-300 font-medium">{new Date(order.createdAt).toLocaleString()}</span>
                   </div>
                 </div>
               </div>
@@ -190,27 +190,27 @@ export const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({
 
             {/* Artwork Breakdown & Files */}
             <div className="space-y-4">
-              <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-700/80">
-                <h3 className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-3 flex items-center gap-1.5">
-                  <Layers className="w-3.5 h-3.5 text-purple-500" />
+              <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-850 border border-slate-300 dark:border-slate-700/80">
+                <h3 className="text-xs uppercase font-extrabold tracking-wider text-black dark:text-white mb-3 flex items-center gap-1.5">
+                  <Layers className="w-3.5 h-3.5 text-blue-600" />
                   <span>Artwork Quantity & Types</span>
                 </h3>
                 <div className="space-y-2 text-xs">
                   {order.artworkItems && order.artworkItems.length > 0 ? (
                     order.artworkItems.map((item, idx) => (
                       <div key={idx} className="flex justify-between py-1.5 border-b border-slate-200 dark:border-slate-700">
-                        <span className="font-medium text-slate-700 dark:text-slate-300">{item.artworkType}</span>
-                        <span className="font-bold text-purple-700 dark:text-purple-300">{item.quantity} units</span>
+                        <span className="font-bold text-black dark:text-slate-300">{item.artworkType}</span>
+                        <span className="font-bold text-blue-700 dark:text-blue-300">{item.quantity} units</span>
                       </div>
                     ))
                   ) : (
-                    <div className="text-slate-500">Total Quantity: {order.totalQuantity}</div>
+                    <div className="text-black dark:text-slate-300 font-bold">Total Quantity: {order.totalQuantity}</div>
                   )}
 
                   {order.formData?.specialNotes && (
                     <div className="pt-2">
-                      <span className="text-slate-500 block mb-1 font-medium">Remarks / Site Notes:</span>
-                      <p className="bg-white dark:bg-slate-800 p-2.5 rounded border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+                      <span className="text-black dark:text-slate-300 block mb-1 font-bold">Remarks / Site Notes:</span>
+                      <p className="bg-white dark:bg-slate-800 p-2.5 rounded border border-slate-300 dark:border-slate-700 text-black dark:text-slate-200 font-medium">
                         {order.formData.specialNotes}
                       </p>
                     </div>

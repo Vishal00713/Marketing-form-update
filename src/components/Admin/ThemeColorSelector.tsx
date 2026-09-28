@@ -191,7 +191,7 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
           {/* 1. Preset Color Swatches */}
           <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-4">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
+              <label className="text-xs font-bold uppercase tracking-wider text-black dark:text-white flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                 <span>Google Forms Color Palette</span>
               </label>
@@ -208,10 +208,10 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
                     key={preset.id}
                     type="button"
                     onClick={() => handleSelectPreset(preset)}
-                    className={`group relative flex flex-col items-center p-2 rounded-xl border transition-all text-center ${
+                    className={`group relative flex flex-col items-center p-2 rounded-xl border transition-all text-center cursor-pointer ${
                       isSelected
                         ? 'border-slate-800 dark:border-white shadow-md ring-2 ring-offset-2 ring-slate-400 dark:ring-offset-slate-900'
-                        : 'border-slate-200 dark:border-slate-800 hover:border-slate-400'
+                        : 'border-slate-300 dark:border-slate-800 hover:border-slate-500'
                     }`}
                   >
                     <div
@@ -220,7 +220,7 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
                     >
                       {isSelected && <Check className="w-5 h-5 drop-shadow-md stroke-[3]" />}
                     </div>
-                    <span className="text-[10px] font-medium text-slate-700 dark:text-slate-300 mt-1.5 line-clamp-1 w-full">
+                    <span className="text-[10px] font-bold text-black dark:text-white mt-1.5 line-clamp-1 w-full">
                       {preset.name.split(' ')[0]}
                     </span>
                   </button>
@@ -230,7 +230,7 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
 
             {/* Custom Hex Color Picker */}
             <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="text-xs text-slate-600 dark:text-slate-400 font-medium">
+              <div className="text-xs text-black dark:text-white font-bold">
                 Or pick any custom corporate brand color:
               </div>
               <div className="flex items-center gap-2">
@@ -246,7 +246,7 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
                   value={selectedHex}
                   onChange={(e) => handleCustomColorChange(e.target.value)}
                   placeholder="#2563eb"
-                  className="w-24 px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono uppercase text-slate-900 dark:text-white"
+                  className="w-24 px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-mono uppercase text-black dark:text-white font-bold"
                 />
               </div>
             </div>
@@ -255,15 +255,15 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
           {/* 2. Background Color / Tint */}
           <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-4">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
+              <label className="text-xs font-bold uppercase tracking-wider text-black dark:text-white flex items-center gap-1.5">
                 <Layout className="w-3.5 h-3.5 text-blue-500" />
                 <span>Background Color Tint</span>
               </label>
-              <span className="text-xs font-mono font-medium text-slate-500">
+              <span className="text-xs font-mono font-bold text-black dark:text-slate-200">
                 {selectedBgHex.toUpperCase()}
               </span>
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-800 dark:text-slate-200 font-medium">
               Google Forms uses matching subtle pastel tints behind form cards. Select your preferred tint:
             </p>
 
@@ -275,22 +275,22 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
                     key={i}
                     type="button"
                     onClick={() => setSelectedBgHex(opt.value)}
-                    className={`p-3 rounded-xl border text-left transition-all ${
+                    className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                       isSelected
                         ? 'border-slate-800 dark:border-white shadow-md ring-2 ring-offset-2 ring-slate-400 dark:ring-offset-slate-900'
-                        : 'border-slate-200 dark:border-slate-800 hover:border-slate-400'
+                        : 'border-slate-300 dark:border-slate-800 hover:border-slate-500'
                     }`}
                   >
                     <div 
-                      className="w-full h-8 rounded-lg border border-slate-300/60 dark:border-slate-700 mb-2 flex items-center justify-center"
+                      className="w-full h-8 rounded-lg border border-slate-300 dark:border-slate-700 mb-2 flex items-center justify-center"
                       style={{ backgroundColor: opt.value }}
                     >
                       {isSelected && <Check className="w-4 h-4 text-slate-800" />}
                     </div>
-                    <span className="text-[11px] font-semibold text-slate-800 dark:text-slate-200 block">
+                    <span className="text-[11px] font-bold text-black dark:text-white block">
                       {opt.label}
                     </span>
-                    <span className="text-[9px] font-mono text-slate-400">
+                    <span className="text-[10px] font-mono font-bold text-slate-700 dark:text-slate-300">
                       {opt.value}
                     </span>
                   </button>
@@ -301,20 +301,20 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
 
           {/* 3. Typography & Header Stripe Thickness */}
           <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-xs space-y-4">
-            <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
-              <Type className="w-3.5 h-3.5 text-purple-500" />
+            <label className="text-xs font-bold uppercase tracking-wider text-black dark:text-white flex items-center gap-1.5">
+              <Type className="w-3.5 h-3.5 text-blue-600" />
               <span>Typography & Header Stripe</span>
             </label>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                <label className="block text-xs font-bold text-black dark:text-white mb-1.5">
                   Font Family Style
                 </label>
                 <select
                   value={selectedFont}
                   onChange={(e) => setSelectedFont(e.target.value as any)}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-medium text-slate-900 dark:text-white outline-none"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold text-black dark:text-white outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="sans">Basic / Google Sans (Clean Sans-Serif)</option>
                   <option value="roboto">Roboto (Technical & Crisp)</option>
@@ -324,13 +324,13 @@ export const ThemeColorSelector: React.FC<ThemeColorSelectorProps> = ({
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                <label className="block text-xs font-bold text-black dark:text-white mb-1.5">
                   Top Header Accent Stripe
                 </label>
                 <select
                   value={selectedAccentHeight}
                   onChange={(e) => setSelectedAccentHeight(Number(e.target.value))}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-medium text-slate-900 dark:text-white outline-none"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold text-black dark:text-white outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value={10}>Standard Google Forms Stripe (10px)</option>
                   <option value={16}>Medium Accent Bar (16px)</option>

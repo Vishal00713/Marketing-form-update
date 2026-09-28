@@ -12,6 +12,7 @@ import {
   initFirebaseAuthListener, 
   getStoredAccessToken, 
   googleSignIn, 
+  switchGoogleAccount,
   logout 
 } from './services/firebaseAuth';
 import { 
@@ -167,6 +168,18 @@ export default function App() {
     }
   };
 
+  const handleSwitchAccount = async () => {
+    try {
+      const result = await switchGoogleAccount(false);
+      if (result) {
+        setAuthUser(result.user);
+        setAccessToken(result.accessToken);
+      }
+    } catch (err) {
+      console.error('Account switch failed:', err);
+    }
+  };
+
   const handleOrderSubmitted = async (newOrder: PrintOrder) => {
     const updatedOrders = [newOrder, ...orders];
     setOrders(updatedOrders);
@@ -276,6 +289,8 @@ export default function App() {
             onOrderSubmitted={handleOrderSubmitted}
             accessToken={accessToken}
             adminSettings={adminSettings}
+            user={authUser}
+            onPromptGoogleAuth={handleSwitchAccount}
             onOpenAdmin={() => navigateToView('admin')}
           />
         )}

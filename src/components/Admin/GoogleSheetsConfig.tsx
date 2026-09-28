@@ -253,23 +253,23 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
       <div className="bg-white dark:bg-slate-850 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+            <h2 className="text-xl font-black text-black dark:text-white flex items-center gap-2">
               <FileSpreadsheet className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
               <span>Centralized Google Sheets Storage & Monthly Reporting</span>
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-medium mt-1">
               Store all customer submissions in a central master spreadsheet and automate recurring monthly reporting cycles.
             </p>
           </div>
 
           {/* Storage Mode Toggle */}
-          <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl border border-slate-200 dark:border-slate-700">
+          <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl border border-slate-300 dark:border-slate-700">
             <button
               onClick={() => handleSettingsSave({ ...currentSettings, sheetStorageEnabled: true })}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                 currentSettings.sheetStorageEnabled
                   ? 'bg-emerald-600 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+                  : 'text-black dark:text-slate-200 hover:text-black'
               }`}
             >
               <FileSpreadsheet className="w-3.5 h-3.5" />
@@ -277,10 +277,10 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
             </button>
             <button
               onClick={() => handleSettingsSave({ ...currentSettings, sheetStorageEnabled: false })}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                 !currentSettings.sheetStorageEnabled
-                  ? 'bg-indigo-600 text-white shadow-sm'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-black dark:text-slate-200 hover:text-black'
               }`}
             >
               <Database className="w-3.5 h-3.5" />
@@ -291,10 +291,10 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
       </div>
 
       {message && (
-        <div className={`p-4 rounded-2xl text-xs sm:text-sm font-semibold flex items-center gap-2 animate-fadeIn ${
+        <div className={`p-4 rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-2 animate-fadeIn ${
           message.type === 'success' 
-            ? 'bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200' 
-            : 'bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200'
+            ? 'bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200' 
+            : 'bg-red-50 dark:bg-red-950/60 border border-red-300 dark:border-red-800 text-red-900 dark:text-red-200'
         }`}>
           {message.type === 'success' ? <CheckCircle2 className="w-4 h-4 text-emerald-600" /> : <AlertCircle className="w-4 h-4 text-red-600" />}
           <span>{message.text}</span>
@@ -313,17 +313,17 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-extrabold text-slate-900 dark:text-white text-base">
+                  <span className="font-extrabold text-black dark:text-white text-base">
                     Centralized Google Sheet Connected
                   </span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/80 text-emerald-800 dark:text-emerald-200">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/80 text-emerald-900 dark:text-emerald-200">
                     Live
                   </span>
                 </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">
+                <p className="text-xs text-slate-800 dark:text-slate-200 font-mono font-bold mt-0.5">
                   ID: {currentSettings.spreadsheetId}
                 </p>
-                <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 mt-1">
+                <div className="flex items-center gap-2 text-xs text-slate-800 dark:text-slate-200 mt-1 font-medium">
                   <span>Tab 1: <strong>{currentSettings.sheetName || 'Signage_Submissions_2026'}</strong></span>
                   <span>&bull;</span>
                   <span>Tab 2: <strong>Monthly_Reporting_Cycle</strong></span>
@@ -351,10 +351,10 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
               <PlusCircle className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="font-bold text-base text-slate-900 dark:text-white">
+              <h3 className="font-bold text-base text-black dark:text-white">
                 No Centralized Google Sheet Configured Yet
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto mt-1">
+              <p className="text-xs text-slate-800 dark:text-slate-200 font-medium max-w-md mx-auto mt-1">
                 Initialize a dedicated master Google Sheet to store incoming print orders, track statuses, and generate monthly reports.
               </p>
             </div>
@@ -362,7 +362,7 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
             <button
               onClick={handleCreateNewMasterSheet}
               disabled={isCreatingSheet}
-              className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-lg shadow-emerald-500/20 inline-flex items-center gap-2 transition-all disabled:opacity-50"
+              className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-lg shadow-emerald-500/20 inline-flex items-center gap-2 transition-all disabled:opacity-50 cursor-pointer"
             >
               {isCreatingSheet ? (
                 <>
@@ -381,7 +381,7 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
 
         {/* Manual ID Link / Replace */}
         <div className="pt-2 border-t border-slate-200 dark:border-slate-800">
-          <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+          <label className="block text-xs font-bold uppercase tracking-wider text-black dark:text-white mb-2">
             Or Link an Existing Google Sheet by URL / ID:
           </label>
           <div className="flex gap-2">
@@ -390,11 +390,11 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
               value={manualSheetInput}
               onChange={(e) => setManualSheetInput(e.target.value)}
               placeholder="https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit"
-              className="flex-1 px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-xs bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="flex-1 px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-xs bg-white dark:bg-slate-800 text-black dark:text-white font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
             <button
               onClick={handleLinkManualSheet}
-              className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold text-xs transition-colors flex items-center gap-1.5 shrink-0"
+              className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-black dark:text-slate-200 font-bold text-xs transition-colors flex items-center gap-1.5 shrink-0 border border-slate-300 dark:border-slate-700 cursor-pointer"
             >
               <LinkIcon className="w-3.5 h-3.5" />
               <span>Link Sheet</span>
@@ -408,25 +408,25 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
           {/* Card 1: Batch Push Orders */}
           <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+              <span className="font-bold text-sm text-black dark:text-white flex items-center gap-2">
                 <RefreshCw className="w-4 h-4 text-blue-600" />
                 <span>Synchronize Order Queue</span>
               </span>
               <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                 unsyncedOrders.length > 0 
-                  ? 'bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300' 
-                  : 'bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300'
+                  ? 'bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-300' 
+                  : 'bg-emerald-100 dark:bg-emerald-950 text-emerald-900 dark:text-emerald-300'
               }`}>
                 {unsyncedOrders.length} Pending Sync
               </span>
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-800 dark:text-slate-200 font-medium">
               Push un-synced requests or re-sync all local database records to your central Google Sheet.
             </p>
             <button
               onClick={handlePushUnsyncedOrders}
               disabled={isSyncing || unsyncedOrders.length === 0}
-              className="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm transition-all disabled:opacity-40 flex items-center justify-center gap-2"
+              className="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm transition-all disabled:opacity-40 flex items-center justify-center gap-2 cursor-pointer"
             >
               {isSyncing ? (
                 <>
@@ -445,21 +445,21 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
           {/* Card 2: Automate Monthly Recurring Reporting */}
           <div className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+              <span className="font-bold text-sm text-black dark:text-white flex items-center gap-2">
                 <TrendingUp className="w-4 h-4 text-emerald-600" />
                 <span>Automated Monthly Reporting</span>
               </span>
-              <span className="text-[10px] font-semibold text-slate-400">
+              <span className="text-[10px] font-bold text-slate-700 dark:text-slate-300">
                 Cycle Automation
               </span>
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-800 dark:text-slate-200 font-medium">
               Aggregates orders into monthly reporting cycles: unit volumes, gross expenditure, completion rate, and department rankings.
             </p>
             <button
               onClick={handleAutomateMonthlyReporting}
               disabled={isGeneratingReport || !currentSettings.spreadsheetId}
-              className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-all disabled:opacity-40 flex items-center justify-center gap-2"
+              className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-all disabled:opacity-40 flex items-center justify-center gap-2 cursor-pointer"
             >
               {isGeneratingReport ? (
                 <>
@@ -480,10 +480,10 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
         {/* Export Record Keeping Capabilities */}
         <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-black dark:text-white">
               Seamless Record-Keeping & Exports
             </h4>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-800 dark:text-slate-200 font-medium">
               Download complete order records for internal auditing and offline accounting.
             </p>
           </div>
@@ -491,7 +491,7 @@ export const GoogleSheetsConfig: React.FC<GoogleSheetsConfigProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={exportToCSV}
-              className="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-xs transition-colors flex items-center gap-1.5 shadow-sm"
+              className="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-black dark:text-slate-200 font-bold text-xs transition-colors flex items-center gap-1.5 shadow-sm border border-slate-300 dark:border-slate-700 cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Export CSV</span>

@@ -118,6 +118,20 @@ export const logout = async () => {
   }
 };
 
+/**
+ * Switch Google Account: signs out from current user and launches account chooser
+ */
+export const switchGoogleAccount = async (requestSheetsScopes: boolean = false): Promise<{ user: User; accessToken: string | null } | null> => {
+  try {
+    await signOut(auth);
+  } catch (e) {
+    console.warn('Signout prior to switch account notice:', e);
+  } finally {
+    cachedAccessToken = null;
+  }
+  return await googleSignIn(requestSheetsScopes);
+};
+
 // Convenient aliases
 export const googleSignOut = logout;
 export const getStoredAccessToken = () => cachedAccessToken;
