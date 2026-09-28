@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      var path = window.location.pathname;
+      // Do not redirect asset requests to avoid loops
+      if (!/\.(js|css|json|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)$/i.test(path)) {
+        var segments = path.split('/').filter(Boolean);
+        var repo = segments.length > 0 ? '/' + segments[0] : '';
+        var route = segments.slice(1).join('/');
+        window.location.replace(
+          window.location.origin + repo + '/' + (route ? '#' + route : '') + window.location.search
+        );
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
